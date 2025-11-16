@@ -1,390 +1,566 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GCAKE · Frontend Dev ｜個人品牌網站</title>
-  <meta name="description" content="這是 GCAKE · Frontend Dev 的個人品牌網站，展示前端工程師背景、專業技能、作品集範例與聯絡方式，打造專業且簡潔的網路履歷與作品平台。">
-  <style>
-    /* CSS:BASE-START */
-    html {
-      box-sizing: border-box;
-    }
-    *, *::before, *::after {
-      box-sizing: inherit;
-    }
-    body {
-      margin: 0;
-      background: #172136;
-      color: #f2f3f7;
-      font-family:
-        'Segoe UI', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei',
-        'Helvetica Neue', Arial, 'Liberation Sans', 'sans-serif';
-      line-height: 1.7;
-      font-size: 16px;
-      min-height: 100vh;
-    }
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .container {
-      width: 100%;
-      max-width: 960px;
-      margin: 0 auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-    }
-    a {
-      color: #38b6ff;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    a:hover,
-    a:active,
-    a:focus {
-      color: #16e0b3;
-      outline: none;
-      text-decoration: underline;
-    }
-    /* CSS:BASE-END */
-
-    /* CSS:HERO-START */
-    .section-hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 65vh;
-      background: linear-gradient(135deg, #1f2a50 60%, #233554 100%);
-      padding: 56px 0 32px 0;
-      text-align: center;
-    }
-    .section-hero .hero-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #38b6ff;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.06em;
-    }
-    .section-hero p {
-      margin: 0 0 1.2rem 0;
-      color: #e5e8ef;
-      font-size: 1.05rem;
-    }
-    .section-hero .hero-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 2rem auto;
-      object-fit: cover;
-      border: 3px solid #38b6ff;
-      box-shadow: 0 2px 24px rgba(24,34,48,0.18);
-      background: #101624;
-    }
-    /* CSS:HERO-END */
-
-    /* CSS:ABOUT-START */
-    .section-about {
-      background: #16203b;
-      padding: 48px 0 40px 0;
-    }
-    .section-about .section-title {
-      color: #39d7fc;
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-    .section-about p {
-      color: #c7c8cc;
-      font-size: 1rem;
-      margin-bottom: 0;
-    }
-    /* CSS:ABOUT-END */
-
-    /* CSS:SKILLS-START */
-    .section-skills {
-      background: #172136;
-      padding: 48px 0 40px 0;
-    }
-    .section-skills .section-title {
-      color: #2ed0d4;
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-    .section-skills p {
-      color: #b7bec8;
-      margin-bottom: 0;
-    }
-    /* CSS:SKILLS-END */
-
-    /* CSS:PROJECTS-START */
-    .section-projects {
-      background: #1c2740;
-      padding: 48px 0 40px 0;
-    }
-    .section-projects .section-title {
-      color: #497ffc;
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-    .section-projects p {
-      color: #b7c3dc;
-      margin-bottom: 0;
-    }
-    /* CSS:PROJECTS-END */
-
-    /* CSS:CONTACT-START */
-    .section-contact {
-      background: #172136;
-      padding: 48px 0 40px 0;
-    }
-    .section-contact .section-title {
-      color: #16e0b3;
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-    .section-contact p {
-      color: #b6ceb9;
-      margin-bottom: 1.2rem;
-    }
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-    .contact-list li {
-      font-size: 1rem;
-    }
-    /* CSS:CONTACT-END */
-
-    /* CSS:RWD-START */
-    @media (min-width: 768px) {
-      .container {
-        max-width: 1100px;
-        padding-left: 32px;
-        padding-right: 32px;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GCAKE · Frontend Dev ｜個人品牌網站</title>
+    <meta
+      name="description"
+      content="這是 GCAKE · Frontend Dev 的個人品牌網站，展示前端工程師背景、專業技能、作品集範例與聯絡方式，打造專業且簡潔的網路履歷與作品平台。"
+    />
+    <style>
+      /* CSS:BASE-START */
+      html {
+        box-sizing: border-box;
       }
-      .section-hero {
-        min-height: 75vh;
-        padding: 88px 0 56px 0;
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
       }
-      .section-about .container,
-      .section-skills .container,
-      .section-projects .container,
-      .section-contact .container {
+      body {
+        margin: 0;
+        background: #172136;
+        color: #f2f3f7;
+        font-family: "Segoe UI", "PingFang TC", "Noto Sans TC",
+          "Microsoft JhengHei", "Helvetica Neue", Arial, "Liberation Sans",
+          "sans-serif";
+        line-height: 1.7;
+        font-size: 16px;
+        min-height: 100vh;
+      }
+      .page {
+        min-height: 100vh;
         display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 48px;
+        flex-direction: column;
       }
-      .section-about .section-title,
-      .section-skills .section-title,
-      .section-projects .section-title,
-      .section-contact .section-title {
-        flex: 0 0 180px;
-        margin-bottom: 0;
-        min-width: 120px;
-      }
-      .section-about p,
-      .section-skills p,
-      .section-projects p,
-      .section-contact > .container > div:not(:first-child) {
-        flex: 1 1 auto;
-      }
-    }
-    @media (min-width: 1440px) {
       .container {
-        max-width: 1250px;
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
       }
-    }
-    /* 防止水平捲動根據 UI 偵測 */
-    html, body {
-      overflow-x: hidden;
-    }
-    /* CSS:RWD-END */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+      }
+      a {
+        color: #38b6ff;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        color: #16e0b3;
+        outline: none;
+        text-decoration: underline;
+      }
+      /* CSS:BASE-END */
 
-    /* === 站頂 Nav 樣式 === */
-    .site-header {
-      width: 100%;
-      position: sticky;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      background: #151e35d9;
-      box-shadow: 0 2px 12px rgba(20, 30, 48, 0.10);
-      border-bottom: 1.5px solid #243a60;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.7rem 1.2rem;
-    }
-    .nav-brand {
-      font-size: 1.16rem;
-      font-weight: 700;
-      color: #38b6ff;
-      letter-spacing: 0.08em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-    }
-    .nav-link {
-      font-size: 1rem;
-      color: #e8eafd;
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      transition: background 0.18s, color 0.16s;
-    }
-    .nav-link:hover, .nav-link:focus {
-      background: #193050;
-      color: #16e0b3;
-    }
-    @media (max-width: 480px) {
-      .nav {
-        padding: 0.6rem 0.5rem;
+      /* CSS:HERO-START */
+      .section-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 65vh;
+        background: linear-gradient(135deg, #1f2a50 60%, #233554 100%);
+        padding: 56px 0 32px 0;
+        text-align: center;
       }
-      .nav-links {
-        gap: 0.45rem;
+      .section-hero .hero-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #38b6ff;
+        margin-bottom: 1.2rem;
+        letter-spacing: 0.06em;
       }
-      .nav-brand {
+      .section-hero p {
+        margin: 0 0 1.2rem 0;
+        color: #e5e8ef;
+        font-size: 1.05rem;
+      }
+      .section-hero .hero-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 2rem auto;
+        object-fit: cover;
+        border: 3px solid #38b6ff;
+        box-shadow: 0 2px 24px rgba(24, 34, 48, 0.18);
+        background: #101624;
+      }
+      /* CSS:HERO-END */
+
+      /* CSS:ABOUT-START */
+      .section-about {
+        background: #16203b;
+        padding: 48px 0 40px 0;
+      }
+      .section-about .section-title {
+        color: #39d7fc;
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .section-about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .section-about-text {
+        flex: 1 1 0;
+      }
+      .section-about-img {
+        flex: 0 0 200px;
+        max-width: 260px;
+        margin: 0 auto;
+      }
+      .section-about-list {
+        margin: 1.2rem 0 1.4rem 0;
+        padding-left: 1.1rem;
+        color: #c7e2fd;
+      }
+      .section-about-list li {
+        margin: 0.4rem 0;
+        font-size: 1.05rem;
+        letter-spacing: 0.01em;
+      }
+      .section-about-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        margin: 1rem 0 0 0;
+      }
+      .section-about-links a {
+        font-size: 0.97rem;
+        background: #25345e;
+        color: #38b6ff;
+        padding: 0.35rem 0.95rem;
+        border-radius: 30px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        transition: background 0.18s, color 0.18s;
+      }
+      .section-about-links a:hover,
+      .section-about-links a:focus {
+        background: #1e3654;
+        color: #16e0b3;
+        text-decoration: underline;
+      }
+      .section-about-buttons {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .section-about-buttons a {
+        background: linear-gradient(110deg, #2d71e6, #12b3b3 90%);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 26px;
+        padding: 0.7rem 1.6rem;
+        font-size: 1.05rem;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 12px rgba(34, 132, 224, 0.06);
+        transition: background 0.16s, color 0.13s;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .section-about-buttons a:hover,
+      .section-about-buttons a:focus {
+        background: linear-gradient(110deg, #1b46a1, #16e0b3 99%);
+        color: #eafcff;
+        text-decoration: underline;
+      }
+      @media (min-width: 768px) {
+        .section-about-content {
+          flex-direction: row;
+        }
+        .section-about-text {
+          flex: 1 1 0;
+          margin-right: 30px;
+          min-width: 0;
+        }
+        .section-about-img {
+          flex: 0 0 220px;
+          max-width: 320px;
+          margin: 0;
+          align-self: flex-start;
+        }
+      }
+      /* CSS:ABOUT-END */
+
+      /* CSS:SKILLS-START */
+      .section-skills {
+        background: #172136;
+        padding: 48px 0 40px 0;
+      }
+      .section-skills .section-title {
+        color: #2ed0d4;
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .section-skills p {
+        color: #b7bec8;
+        margin-bottom: 0;
+      }
+      /* CSS:SKILLS-END */
+
+      /* CSS:PROJECTS-START */
+      .section-projects {
+        background: #1c2740;
+        padding: 48px 0 40px 0;
+      }
+      .section-projects .section-title {
+        color: #497ffc;
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .section-projects p {
+        color: #b7c3dc;
+        margin-bottom: 0;
+      }
+      /* CSS:PROJECTS-END */
+
+      /* CSS:CONTACT-START */
+      .section-contact {
+        background: #172136;
+        padding: 48px 0 40px 0;
+      }
+      .section-contact .section-title {
+        color: #16e0b3;
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .section-contact p {
+        color: #b6ceb9;
+        margin-bottom: 1.2rem;
+      }
+      .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .contact-list li {
         font-size: 1rem;
       }
-      .nav-link {
-        font-size: 0.92rem;
-        padding: 0.25rem 0.5rem;
+      /* CSS:CONTACT-END */
+
+      /* CSS:RWD-START */
+      @media (min-width: 768px) {
+        .container {
+          max-width: 1100px;
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+        .section-hero {
+          min-height: 75vh;
+          padding: 88px 0 56px 0;
+        }
+        .section-skills .container,
+        .section-projects .container,
+        .section-contact .container {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 48px;
+        }
+        .section-skills .section-title,
+        .section-projects .section-title,
+        .section-contact .section-title {
+          flex: 0 0 180px;
+          margin-bottom: 0;
+          min-width: 120px;
+        }
+        .section-skills p,
+        .section-projects p,
+        .section-contact > .container > div:not(:first-child) {
+          flex: 1 1 auto;
+        }
       }
-    }
-    /* === Footer 樣式 === */
-    footer.site-footer {
-      font-size: 0.93rem;
-      color: #b1c7de;
-      background: #172136;
-      text-align: center;
-      padding: 1.2rem 0 1.8rem 0;
-      border-top: 1px solid #293755;
-      letter-spacing: 0.01em;
-      margin-top: auto;
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header class="site-header">
-      <nav class="nav container" aria-label="主選單">
-        <div class="nav-brand">Your Name · Frontend Dev</div>
-        <div class="nav-links">
-          <a class="nav-link" href="#hero">首頁</a>
-          <a class="nav-link" href="#about">關於我</a>
-          <a class="nav-link" href="#skills">技能</a>
-          <a class="nav-link" href="#projects">作品集</a>
-          <a class="nav-link" href="#contact">聯絡我</a>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <!-- SECTION:HERO-START -->
-      <section id="hero" class="section section-hero">
-        <img
-          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
-          alt="在筆電前撰寫程式碼的前端開發者"
-          class="hero-image"
-          loading="lazy"
+      @media (min-width: 1440px) {
+        .container {
+          max-width: 1250px;
+        }
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      /* CSS:RWD-END */
+
+      /* === 站頂 Nav 樣式 === */
+      .site-header {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background: #151e35d9;
+        box-shadow: 0 2px 12px rgba(20, 30, 48, 0.1);
+        border-bottom: 1.5px solid #243a60;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0.7rem 1.2rem;
+      }
+      .nav-brand {
+        font-size: 1.16rem;
+        font-weight: 700;
+        color: #38b6ff;
+        letter-spacing: 0.08em;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 1rem;
+        color: #e8eafd;
+        padding: 0.3rem 0.7rem;
+        border-radius: 4px;
+        transition: background 0.18s, color 0.16s;
+      }
+      .nav-link:hover,
+      .nav-link:focus {
+        background: #193050;
+        color: #16e0b3;
+      }
+      @media (max-width: 480px) {
+        .nav {
+          padding: 0.6rem 0.5rem;
+        }
+        .nav-links {
+          gap: 0.45rem;
+        }
+        .nav-brand {
+          font-size: 1rem;
+        }
+        .nav-link {
+          font-size: 0.92rem;
+          padding: 0.25rem 0.5rem;
+        }
+      }
+      /* === Footer 樣式 === */
+      footer.site-footer {
+        font-size: 0.93rem;
+        color: #b1c7de;
+        background: #172136;
+        text-align: center;
+        padding: 1.2rem 0 1.8rem 0;
+        border-top: 1px solid #293755;
+        letter-spacing: 0.01em;
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <nav class="nav container" aria-label="主選單">
+          <div class="nav-brand">GCAKE · Frontend Dev</div>
+          <div class="nav-links">
+            <a class="nav-link" href="#hero">首頁</a>
+            <a class="nav-link" href="#about">關於我</a>
+            <a class="nav-link" href="#skills">技能</a>
+            <a class="nav-link" href="#projects">作品集</a>
+            <a class="nav-link" href="#contact">聯絡我</a>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <!-- SECTION:HERO-START -->
+        <section id="hero" class="section section-hero">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+            alt="在筆電前撰寫程式碼的前端開發者"
+            class="hero-image"
+            loading="lazy"
+          />
+          <h1 class="hero-title">GCAKE · Frontend Dev</h1>
+          <p>
+            當前正以「前端工程師 / 運動科學研究員 /
+            區塊鏈推廣者」身分，持續自我探索與跨界創作。
+          </p>
+          <p>
+            一邊養病治療，一邊經營 Podcast、電子報、Web3
+            工具；熱衷學習新技術，分享知識、串連社群、推動多元成長。
+          </p>
+          <div class="section-about-buttons" style="justify-content: center">
+            <a href="#projects">查看作品集</a>
+            <a href="#contact">聯絡我</a>
+          </div>
+        </section>
+        <!-- SECTION:HERO-END -->
+
+        <!-- SECTION:ABOUT-START -->
+        <section
+          id="about"
+          class="section section-about"
+          aria-labelledby="about-heading"
         >
-        <h1 class="hero-title">打造您的專業前端品牌網站</h1>
-        <p>本區將放置一句話自我介紹，以及「前端工程師」或其他核心職稱定位。</p>
-        <p>這裡也會包含一個行動呼籲，例如「瀏覽作品集」或「下載履歷」按鈕。</p>
-        <p style="margin-top:2rem; color:#55e6b6; font-size:0.98rem;">
-          <strong>區塊說明：</strong>之後會用 Section SDD 的 Prompt 產生正式文案與版面，再把整個 section 程式碼貼回來取代這一區。
-        </p>
-      </section>
-      <!-- SECTION:HERO-END -->
+          <div class="container section-about-content">
+            <div class="section-about-text">
+              <h2 id="about-heading" class="section-title">關於我</h2>
+              <p>
+                現居台南，現役躁鬱症患者，一邊養病治療，一邊持續進行自媒體內容創作，積極探索生命不同階段的意義與價值。
+              </p>
+              <p>
+                運動科學（專長運動生物力學）研究員、區塊鏈推廣者，同時也是台灣最大免費
+                Podcast
+                製作教學網站的內容編輯。喜歡跨界協作、分享自己所長，專注於將知識轉化為能量，幫助更多人找到自我與可能性。
+              </p>
+            </div>
+            <div class="section-about-img">
+              <img
+                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=480&q=80"
+                alt="正在敲程式碼的工程師示意照"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- SECTION:ABOUT-END -->
 
-      <!-- SECTION:ABOUT-START -->
-      <section id="about" class="section section-about" aria-labelledby="about-heading">
-        <div class="container">
-          <h2 id="about-heading" class="section-title">關於我（之後會用 Section SDD 替換）</h2>
-          <p>
-            這裡目前是 About 區的占位內容，之後會用 Section SDD 的 Prompt 產生新的 section，請開發者整段貼在這兩個註解中間，完全取代本區內容。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:ABOUT-END -->
-
-      <!-- SECTION:SKILLS-START -->
-      <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
-        <div class="container">
-          <h2 id="skills-heading" class="section-title">技能（之後會用 Section SDD 替換）</h2>
-          <p>
-            這裡目前是 Skills 區的占位內容，之後會用 Section SDD 的 Prompt 產生新的 section，請開發者整段貼在這兩個註解中間，完全取代本區內容。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:SKILLS-END -->
-
-      <!-- SECTION:PROJECTS-START -->
-      <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
-        <div class="container">
-          <h2 id="projects-heading" class="section-title">作品集（之後會用 Section SDD 替換）</h2>
-          <p>
-            這裡目前是 Projects 區的占位內容，之後會用 Section SDD 的 Prompt 產生新的 section，請開發者整段貼在這兩個註解中間，完全取代本區內容。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:PROJECTS-END -->
-
-      <!-- SECTION:CONTACT-START -->
-      <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
-        <div class="container">
-          <h2 id="contact-heading" class="section-title">聯絡我（之後會用 Section SDD 替換）</h2>
-          <div>
-            <p>
-              這裡目前是 Contact 區的占位內容，之後會用 Section SDD 的 Prompt 產生新的 section，請開發者整段貼在這兩個註解中間，完全取代本區內容。
-            </p>
-            <ul class="contact-list">
+        <!-- SECTION:SKILLS-START -->
+        <section
+          id="skills"
+          class="section section-skills"
+          aria-labelledby="skills-heading"
+        >
+          <div class="container">
+            <h2 id="skills-heading" class="section-title">技能</h2>
+            <ul class="skills-list">
               <li>
-                Email：<a href="mailto:hello@example.com">hello@example.com</a>
+                前端初學：<br />
+                正在學習 HTML、CSS 基礎網站排版與 JavaScript、Vite、Vue.js
+                等現代前端技術。
               </li>
               <li>
-                電話：<a href="tel:+886900000000">+886 900 000 000</a>
+                Vibe coding 實驗：<br />
+                參與 Vibe coding 練習，熱衷探索程式邏輯和架構設計。
               </li>
               <li>
-                GitHub：<a href="https://github.com/yourname" target="_blank" rel="noopener">github.com/yourname</a>
+                運動科學／生物力學：<br />
+                具備生物力學、運動數據分析素養，能跨界於科學內容與技術應用。
               </li>
               <li>
-                LinkedIn：<a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener">linkedin.com/in/yourname</a>
+                Podcast / 自媒體內容製作：<br />
+                自行規劃、製作 Podcast
+                節目及電子報內容，擅長腳本設計、錄音剪輯到多平台發佈流程。
+              </li>
+              <li>
+                區塊鏈／Web3 應用推廣：<br />
+                參與 DeFi 工具開發、推廣區塊鏈知識，並有公開 Web App 作品實例。
               </li>
             </ul>
           </div>
-        </div>
-      </section>
-      <!-- SECTION:CONTACT-END -->
-    </main>
-    <footer class="site-footer">
-      &copy; 2025 Your Name · Frontend Dev. 保留所有權利。| 版面僅供個人展示練習與職涯用途。
-    </footer>
-  </div>
-</body>
+        </section>
+        <!-- SECTION:SKILLS-END -->
+
+        <!-- SECTION:PROJECTS-START -->
+        <section
+          id="projects"
+          class="section section-projects"
+          aria-labelledby="projects-heading"
+        >
+          <div class="container">
+            <h2 id="projects-heading" class="section-title">作品集</h2>
+            <ul class="section-about-list">
+              <li>
+                Podcast 節目：《喂喂你還好不好》
+                <a
+                  href="https://open.firstory.me/user/wwhowbuhow/platforms"
+                  target="_blank"
+                  rel="noopener"
+                  >收聽平台</a
+                >
+              </li>
+              <li>
+                電子報：《區塊鏈文摘》
+                <a
+                  href="https://paragraph.xyz/@tw3"
+                  target="_blank"
+                  rel="noopener"
+                  >訂閱連結</a
+                >
+              </li>
+              <li>
+                知識整合：《Taiwan Podcaster 龐大資訊人包》
+                <a
+                  href="https://sites.google.com/view/taiwanpodcast/"
+                  target="_blank"
+                  rel="noopener"
+                  >網站入口</a
+                >
+              </li>
+              <li>
+                DeFi 流動池自動贖回救援工具
+                <a
+                  href="https://auto-redeem.zeabur.app/"
+                  target="_blank"
+                  rel="noopener"
+                  >Web app 連結</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- SECTION:PROJECTS-END -->
+
+        <!-- SECTION:CONTACT-START -->
+        <section
+          id="contact"
+          class="section section-contact"
+          aria-labelledby="contact-heading"
+        >
+          <div class="container">
+            <h2 id="contact-heading" class="section-title">聯絡我</h2>
+            <div>
+              <ul class="contact-list">
+                <li>
+                  Email：<a href="mailto:wwhowbuhow@pm.me">wwhowbuhow@pm.me</a>
+                </li>
+                <li>
+                  GitHub：<a
+                    href="https://github.com/gcake119"
+                    target="_blank"
+                    rel="noopener"
+                    >github.com/gcake119</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <!-- SECTION:CONTACT-END -->
+      </main>
+      <footer class="site-footer">
+        &copy; 2025 GCAKE · Frontend Dev. 保留所有權利。|
+        版面僅供個人展示練習與職涯用途。
+      </footer>
+    </div>
+  </body>
 </html>
